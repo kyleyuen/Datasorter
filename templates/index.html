@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🗂️ Data Sorting Assistant</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    background: #f9fafb;
+    color: #222;
+  }
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+  form {
+    margin-bottom: 40px;
+  }
+  h2 {
+    color: #34495e;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 6px;
+  }
+  label {
+    display: block;
+    margin: 10px 0 6px;
+    font-weight: 600;
+  }
+  input[type="file"],
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd6dd;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+  }
+  textarea {
+    min-height: 120px;
+  }
+  input[type="submit"] {
+    background: #3498db;
+    color: white;
+    font-size: 16px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background: #2980b9;
+  }
+  .file-info {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .response-section {
+    background: #ecf0f1;
+    border-radius: 8px;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: inset 0 0 10px #bdc3c7;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🗂️ Data Sorting Assistant</h1>
+
+  <!-- File Upload Form -->
+  <form action="/sort_file" method="post" enctype="multipart/form-data">
+    <h2>📁 Upload File for Sorting</h2>
+    <label for="file">Choose file:</label>
+    <input type="file" id="file" name="file" accept=".csv,.txt,.xlsx,.xls,.json" required />
+    <div class="file-info">Supported formats: CSV, TXT, Excel (.xlsx, .xls), JSON</div>
+
+    <label for="sort_instructions_file">Sorting Instructions (optional):</label>
+    <textarea id="sort_instructions_file" name="sort_instructions" placeholder="e.g., Sort by date, remove duplicates, organize by category..."></textarea>
+
+    <input type="submit" value="Upload & Sort File" />
+  </form>
+
+  {% if response %}
+  <div>
+    <h2>📄 Assistant Response:</h2>
+    <div class="response-section">{{ response }}</div>
+  </div>
+  {% endif %}
+
+  <hr />
+
+  <!-- Text Data Form -->
+  <form action="/sort_text" method="post">
+    <h2>✏️ Paste Data for Sorting</h2>
+    <label for="data">Paste your raw data:</label>
+    <textarea id="data" name="data" placeholder="Paste messy data here (CSV, tab-separated, any format)..."></textarea>
+
+    <label for="sort_instructions_text">Sorting Instructions (optional):</label>
+    <textarea id="sort_instructions_text" name="sort_instructions" placeholder="e.g., Convert to CSV, sort alphabetically, remove empty rows..."></textarea>
+
+    <input type="submit" value="Sort Text Data" />
+  </form>
+
+  {% if text_response %}
+  <div>
+    <h2>📄 Assistant Response:</h2>
+    <div class="response-section">{{ text_response }}</div>
+  </div>
+  {% endif %}
+</div>
+</body>
+</html>

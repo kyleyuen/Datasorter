@@ -1,0 +1,9 @@
+Name, Email, Phone Number, Purchase Date
+John Doe, johndoe@email.com, (555) 123-4567, 2023/04/21
+Jane Smith, janesmith@email.net, 555-987-6543, 04-15-2023
+Bob Johnson,, 555.321.7654, 15-Apr-2023
+, alice.wonderland@email.org, 5551234321, 2023.04.16
+Charlie Brown, charlie.brown@email, +1 555 234 5678, 2023/4/17
+Daisy, daisyflower@email.com, 555 333 2222,
+Edgar Poe, edgarpoe@email.com, , 2023-04-20
+Frank Castle, frank.castle@email.com, (555)1234567, 4/18/2023
