@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request
 import cohere
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+
+api_key = os.getenv("COHERE_API_KEY")
+
+co = cohere.ClientV2(api_key)
 app = Flask(__name__)
-
-co = cohere.Client("YOUR_API_KEY")
 
 data_sorter_personality = """You are a highly skilled and efficient Data Sorting Assistant. Your expertise lies in:
 
